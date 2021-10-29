@@ -23,7 +23,7 @@ int filas = 2, columnas = 5;
 
 coordenada pos_siguiente(int x, int y, int direccion){
     coordenada pos;
-    
+
     pos.row = x + dir_x[direccion];
     pos.col = y + dir_y[direccion];
     return pos;
@@ -42,9 +42,10 @@ bool pos_valida(int mapa_copy[][columnas],int rows,int cols, coordenada pos){
 void pinta(char mapa [][columnas])
 {
     // int filas = 2, columnas = 5;
-    for(int i=0;i<filas;i++)
+    int i,j;
+    for( i=0;i<filas;i++)
     {
-        for(int j=0;j<columnas;j++)
+        for( j=0;j<columnas;j++)
         {
             printf("%c ",mapa[i][j]);
         }
@@ -55,9 +56,10 @@ void pinta(char mapa [][columnas])
 void pinta_pi(coordenada mapa [][columnas])
 {
     // int filas = 2, columnas = 5;
-    for(int i=0;i<filas;i++)
+    int i,j;
+    for( i=0;i<filas;i++)
     {
-        for(int j=0;j<columnas;j++)
+        for( j=0;j<columnas;j++)
         {
             printf("row -> %d, col -> %d \t",mapa[i][j].row, mapa[i][j].col);
         }
@@ -67,9 +69,10 @@ void pinta_pi(coordenada mapa [][columnas])
 
 void pinta_int(int mapa [][columnas]){
     // int filas = 2, columnas = 5;
-    for(int i=0;i<filas;i++)
+    int i,j;
+    for( i=0;i<filas;i++)
     {
-        for(int j=0;j<columnas;j++)
+        for( j=0;j<columnas;j++)
         {
             printf("%d ",mapa[i][j]);
         }
@@ -123,8 +126,9 @@ parte_t * bfs(char mapa [filas][columnas], coordenada c, int * pasos){
     coordenada pi[2][5];
 
 
-    for(int i=0;i<2;i++){
-        for(int j=0;j<5;j++){
+    int i,j;
+    for( i=0;i<2;i++){
+        for( j=0;j<5;j++){
             if(mapa[i][j] == 'x'){ // Comidita = x = -2
                 mapa_copy[i][j] = -2;
             }
@@ -153,9 +157,11 @@ parte_t * bfs(char mapa [filas][columnas], coordenada c, int * pasos){
         cambio = false;
         // printf("%d %d", filas, columnas);
 
-        for (int i = 0; i < filas; i++)
+        int i;
+        for ( i = 0; i < filas; i++)
         {
-            for (int j = 0; j < columnas; j++)
+            int j;
+            for ( j = 0; j < columnas; j++)
             {
                 // if(mapacopy[i][j] ==  '.'|| mapacopy[i][j] == '@' || mapacopy[i][j] == 'o')
                 //     continue;
@@ -170,12 +176,13 @@ parte_t * bfs(char mapa [filas][columnas], coordenada c, int * pasos){
                 if(l <= 0)// Casilla vacia, con obstaculos o con comidita, estamos buscando aquellas casillas a las que se haya llegado desde otra o la 1ra desde la q comenzamos // || mapacopy[i][j] == -1)
                     continue;
 
-                for(int k = 0; k < 4; k++){
+                int k;
+                for( k = 0; k < 4; k++){
                     coordenada pos;
                     pos = pos_siguiente( i, j, k); // Obteniendo posicion al sumar x + numero que sea en la direccion
                     // printf("pos: x:%d y:%d \n", pos.row, pos.col);
                     // printf(" \n %d %d " );
-                    // printf("x: %d y:%d", pos.row, pos.col); 
+                    // printf("x: %d y:%d", pos.row, pos.col);
                     bool se_puede = pos_valida(mapa_copy, filas, columnas, pos);
                     if(se_puede){ // Comprobando que la posicion se encuentre entre los limites del mapa y que la misma este vacia
                         if(mapa_copy[pos.row][pos.col] == -2){
@@ -302,7 +309,7 @@ parte_t * bfs(char mapa [filas][columnas], coordenada c, int * pasos){
 //                     pos = pos_siguiente( i, j, k); // Obteniendo posicion al sumar x + numero que sea en la direccion
 //                     // printf("pos: x:%d y:%d \n", pos.row, pos.col);
 //                     // printf(" \n %d %d " );
-//                     // printf("x: %d y:%d", pos.row, pos.col); 
+//                     // printf("x: %d y:%d", pos.row, pos.col);
 //                     bool se_puede = pos_valida(mapa_copy, filas, columnas, pos);
 //                     if(se_puede){ // Comprobando que la posicion se encuentre entre los limites del mapa y que la misma este vacia
 //                         if(mapa_copy[pos.row][pos.col] == -2){
@@ -313,7 +320,7 @@ parte_t * bfs(char mapa [filas][columnas], coordenada c, int * pasos){
 //                             static coordenada result[filas*columnas];
 //                             int paso_actual = mapa_copy[i][j] - 1;
 //                             // sols = (coordenada *) malloc(pasos * sizeof(coordenada));
-                            
+
 //                             // printf("llego");
 //                             while(temp_x != c.row && temp_y != c.col){
 //                                 coordenada temp_pos = pi[temp_x][temp_y];
