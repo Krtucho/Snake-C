@@ -1,16 +1,9 @@
-
-typedef struct node
-{
-    int row;
-    int col;
-}coordenada;
+#include <stdio.h>
+#include <stdlib.h>
+#include<stdbool.h>
+#include "linkedlist.h"
 
 
-typedef struct
-{
-     struct node * next;
-    coordenada pos;
-}parte;
 
 
 parte* CreaSnake(int filas, int columnas)
@@ -30,36 +23,45 @@ parte* CreaSnake(int filas, int columnas)
     return head;
 }
 
-void MoverSnake()
+void ColocarSnakeEnWorld(parte * head, char mapa[filas][columnas])
 {
-
-}
-void Juego(int filas, int columnas)
-{
-    parte * head = creaSnake(filas,columnas);//Se crea la snake con tres piezas enlazadas, solo se necesita la direccion de head
-    char mapa[filas][columnas];
-    int i,j;
-
-    //En el mapa se toman los siguientes char:
-    //@ cabeza
-    //o cuerpo
-    //x comidita
-    //.vacio
-
-    for(i=0;i<filas;i++)
+    parte * current = head;
+    mapa[head->pos.row][head->pos.col]="@";
+    current = current->next;
+    while (current != NULL)
     {
-        for(j=0;j<columnas;j++)
-        {
-            mapa[i][j]='.';
-        }
+        mapa[current->pos.row][current->pos.col]="o";
+        current = current->next;
     }
-    //Se procede a poner la pequenna snake en el mapa
 
-    parte * current = &head;
+}
+
+void PonerComiditas(mapa[filas][columnas])
+{
+    numero = rand() % filas;
+
+}
+
+bool MoverSnake(parte head,/* movimientos obtenidos en el bfs*/ movimientos, int tamannoAumentar,mapa[filas][columnas])
+{
+    //Ver si con el movimiento actual se pierde y devolver el bool
+    //if(movimientos.count==0){RealizarMovimientoAleatorio();}
+
+
+
 
 
 
 
 
 }
+
+
+
+
+
+
+
+
+
 
