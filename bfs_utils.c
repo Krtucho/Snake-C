@@ -39,46 +39,46 @@ bool pos_valida(int mapa_copy[][columnas],int rows,int cols, coordenada pos){
     return false;
 }
 
-void pinta(char mapa [][columnas])
-{
-    // int filas = 2, columnas = 5;
-    int i,j;
-    for( i=0;i<filas;i++)
-    {
-        for( j=0;j<columnas;j++)
-        {
-            printf("%c ",mapa[i][j]);
-        }
-         printf("\n");
-    }
-}
+// void pinta(char mapa [][columnas])
+// {
+//     // int filas = 2, columnas = 5;
+//     int i,j;
+//     for( i=0;i<filas;i++)
+//     {
+//         for( j=0;j<columnas;j++)
+//         {
+//             printf("%c ",mapa[i][j]);
+//         }
+//          printf("\n");
+//     }
+// }
 
-void pinta_pi(coordenada mapa [][columnas])
-{
-    // int filas = 2, columnas = 5;
-    int i,j;
-    for( i=0;i<filas;i++)
-    {
-        for( j=0;j<columnas;j++)
-        {
-            printf("row -> %d, col -> %d \t",mapa[i][j].row, mapa[i][j].col);
-        }
-         printf("\n");
-    }
-}
+// void pinta_pi(coordenada mapa [][columnas])
+// {
+//     // int filas = 2, columnas = 5;
+//     int i,j;
+//     for( i=0;i<filas;i++)
+//     {
+//         for( j=0;j<columnas;j++)
+//         {
+//             printf("row -> %d, col -> %d \t",mapa[i][j].row, mapa[i][j].col);
+//         }
+//          printf("\n");
+//     }
+// }
 
-void pinta_int(int mapa [][columnas]){
-    // int filas = 2, columnas = 5;
-    int i,j;
-    for( i=0;i<filas;i++)
-    {
-        for( j=0;j<columnas;j++)
-        {
-            printf("%d ",mapa[i][j]);
-        }
-         printf("\n");
-    }
-}
+// void pinta_int(int mapa [][columnas]){
+//     // int filas = 2, columnas = 5;
+//     int i,j;
+//     for( i=0;i<filas;i++)
+//     {
+//         for( j=0;j<columnas;j++)
+//         {
+//             printf("%d ",mapa[i][j]);
+//         }
+//          printf("\n");
+//     }
+// }
 
 // typedef struct
 // {
@@ -86,33 +86,33 @@ void pinta_int(int mapa [][columnas]){
 //     coordenada pos;
 // }parte;
 
-void push(parte_t * head, coordenada pos) {
-    parte_t * current = head;
-    while (current->next != NULL) {
-        current = current->next;
-    }
+// void push(parte_t * head, coordenada pos) {
+//     parte_t * current = head;
+//     while (current->next != NULL) {
+//         current = current->next;
+//     }
 
-    /* now we can add a new variable */
-    current->next = (parte_t *) malloc(sizeof(parte_t));
-    current->next->pos = pos;
-    current->next->next = NULL;
-}
-void push_front(parte_t ** head, coordenada pos) {
-    parte_t * new_node;
-    new_node = (parte_t *) malloc(sizeof(parte_t));
+//     /* now we can add a new variable */
+//     current->next = (parte_t *) malloc(sizeof(parte_t));
+//     current->next->pos = pos;
+//     current->next->next = NULL;
+// }
+// void push_front(parte_t ** head, coordenada pos) {
+//     parte_t * new_node;
+//     new_node = (parte_t *) malloc(sizeof(parte_t));
 
-    new_node->pos = pos;
-    new_node->next = *head;
-    *head = new_node;
-}
-void print_list(parte_t * head) {
-    parte_t * current = head;
-    printf("Imprimiendo lista con respectivos pasos...\n");
-    while (current != NULL) {
-        printf("%d %d\n", current->pos.row, current->pos.col);
-        current = current->next;
-    }
-}
+//     new_node->pos = pos;
+//     new_node->next = *head;
+//     *head = new_node;
+// }
+// void print_list(parte_t * head) {
+//     parte_t * current = head;
+//     printf("Imprimiendo lista con respectivos pasos...\n");
+//     while (current != NULL) {
+//         printf("%d %d\n", current->pos.row, current->pos.col);
+//         current = current->next;
+//     }
+// }
 // void push_front(parte * tail, parte * insertar, coordenada pos){
 //     insertar->next = tail;
 

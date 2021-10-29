@@ -2,19 +2,21 @@
 #include <stdlib.h>
 #include <string.h>
 #include<stdbool.h>// Booleanos
-#include "Juego.h"
+#include "utils.h"
+#include "linked_list.h"
+// #include "Juego.h"
 
 
-typedef struct parte
-{
-     struct parte * next;
-    coordenada pos;
-}parte_t;
+// typedef struct parte
+// {
+//      struct parte * next;
+//     coordenada pos;
+// }parte_t;
 
 int dir_x[4] = {-1, 0, 1, 0}; // Direcciones para las x
 int dir_y[4] = { 0, 1, 0,-1}; // Direcciones para las y
 
-int filas = 2, columnas = 5;
+// int filas = 2, columnas = 5;
 
 coordenada pos_siguiente(int x, int y, int direccion){ // Dada una posicion (x,y) y una direccion, develve la posicion adelantando 1 paso hacia esa direccion
     coordenada pos;
@@ -34,73 +36,73 @@ bool pos_valida(int mapa_copy[][columnas],int rows,int cols, coordenada pos){ //
     return false;
 }
 
-void pinta(char mapa [][columnas])
-{
-    int i,j;
-    for( i=0;i<filas;i++)
-    {
-        for( j=0;j<columnas;j++)
-        {
-            printf("%c ",mapa[i][j]);
-        }
-         printf("\n");
-    }
-}
+// void pinta(char mapa [][columnas])
+// {
+//     int i,j;
+//     for( i=0;i<filas;i++)
+//     {
+//         for( j=0;j<columnas;j++)
+//         {
+//             printf("%c ",mapa[i][j]);
+//         }
+//          printf("\n");
+//     }
+// }
 
-void pinta_pi(coordenada mapa [][columnas])
-{
-    int i,j;
-    for( i=0;i<filas;i++)
-    {
-        for( j=0;j<columnas;j++)
-        {
-            printf("row -> %d, col -> %d \t",mapa[i][j].row, mapa[i][j].col);
-        }
-         printf("\n");
-    }
-}
+// void pinta_pi(coordenada mapa [][columnas])
+// {
+//     int i,j;
+//     for( i=0;i<filas;i++)
+//     {
+//         for( j=0;j<columnas;j++)
+//         {
+//             printf("row -> %d, col -> %d \t",mapa[i][j].row, mapa[i][j].col);
+//         }
+//          printf("\n");
+//     }
+// }
 
-void pinta_int(int mapa [][columnas])
-{
-    int i,j;
-    for( i=0;i<filas;i++)
-    {
-        for( j=0;j<columnas;j++)
-        {
-            printf("%d ",mapa[i][j]);
-        }
-         printf("\n");
-    }
-}
+// void pinta_int(int mapa [][columnas])
+// {
+//     int i,j;
+//     for( i=0;i<filas;i++)
+//     {
+//         for( j=0;j<columnas;j++)
+//         {
+//             printf("%d ",mapa[i][j]);
+//         }
+//          printf("\n");
+//     }
+// }
 
 
-void push(parte_t * head, coordenada pos) { // Annade un nodo al final de la linkedlist
-    parte_t * current = head;
-    while (current->next != NULL) {
-        current = current->next;
-    }
+// void push(parte_t * head, coordenada pos) { // Annade un nodo al final de la linkedlist
+//     parte_t * current = head;
+//     while (current->next != NULL) {
+//         current = current->next;
+//     }
 
-    /* now we can add a new variable */
-    current->next = (parte_t *) malloc(sizeof(parte_t));
-    current->next->pos = pos;
-    current->next->next = NULL;
-}
-void push_front(parte_t ** head, coordenada pos) { // Annade nodo al inicio de la linked list (este metdo no se utiliza en esta archivo)
-    parte_t * new_node;
-    new_node = (parte_t *) malloc(sizeof(parte_t));
+//     /* now we can add a new variable */
+//     current->next = (parte_t *) malloc(sizeof(parte_t));
+//     current->next->pos = pos;
+//     current->next->next = NULL;
+// }
+// void push_front(parte_t ** head, coordenada pos) { // Annade nodo al inicio de la linked list (este metdo no se utiliza en esta archivo)
+//     parte_t * new_node;
+//     new_node = (parte_t *) malloc(sizeof(parte_t));
 
-    new_node->pos = pos;
-    new_node->next = *head;
-    *head = new_node;
-}
-void print_list(parte_t * head) {
-    parte_t * current = head;
-    printf("Imprimiendo lista con respectivos pasos...\n");
-    while (current != NULL) {
-        printf("%d %d\n", current->pos.row, current->pos.col);
-        current = current->next;
-    }
-}
+//     new_node->pos = pos;
+//     new_node->next = *head;
+//     *head = new_node;
+// }
+// void print_list(parte_t * head) {
+//     parte_t * current = head;
+//     printf("Imprimiendo lista con respectivos pasos...\n");
+//     while (current != NULL) {
+//         printf("%d %d\n", current->pos.row, current->pos.col);
+//         current = current->next;
+//     }
+// }
 
 // Via devolviendo LinkedList
 parte_t * bfs(char mapa [filas][columnas], coordenada c, int * pasos){
@@ -201,25 +203,25 @@ parte_t * bfs(char mapa [filas][columnas], coordenada c, int * pasos){
     return NULL;
 }
 
-int main()
-{
-    char mapa[2][5] = {
-        {'.', '.', '.', '@', '.'},
-        {'.', '.', '.', 'x', '.'}};
+// int main()
+// {
+//     char mapa[2][5] = {
+//         {'.', '.', '.', '@', '.'},
+//         {'.', '.', '.', 'x', '.'}};
 
-    coordenada p;
-    p.row = 0;
-    p.col = 0;
+//     coordenada p;
+//     p.row = 0;
+//     p.col = 0;
 
-    int pasos = 0;
+//     int pasos = 0;
 
-    parte_t * sols = (parte_t*)malloc(sizeof(parte_t));
+//     parte_t * sols = (parte_t*)malloc(sizeof(parte_t));
 
-    sols = bfs(mapa, p, &pasos);
-    printf("\n pasos: %d \n", pasos);
+//     sols = bfs(mapa, p, &pasos);
+//     printf("\n pasos: %d \n", pasos);
 
 
-    print_list(sols);
+//     print_list(sols);
 
-    return 0;
-}
+//     return 0;
+// }
