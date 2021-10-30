@@ -39,3 +39,26 @@ void print_list(parte_t * head) {
         current = current->next;
     }
 }
+
+coordenada pos remove_last(parte_t * head) {
+    coordenada retval = 0;
+    /* if there is only one item in the list, remove it */
+    if (head->next == NULL) {
+        retval = head->pos;
+        free(head);
+        return retval;
+    }
+
+    /* get to the second to last node in the list */
+    parte_t * current = head;
+    while (current->next->next != NULL) {
+        current = current->next;
+    }
+
+    /* now current points to the second to last item of the list, so let's remove current->next */
+    retval = current->next->pos;
+    free(current->next);
+    current->next = NULL;
+    return retval;
+
+}
