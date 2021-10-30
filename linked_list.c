@@ -40,8 +40,8 @@ void print_list(parte_t * head) {
     }
 }
 
-coordenada pos remove_last(parte_t * head) {
-    coordenada retval = 0;
+coordenada remove_last(parte_t * head) {
+    coordenada retval;
     /* if there is only one item in the list, remove it */
     if (head->next == NULL) {
         retval = head->pos;
