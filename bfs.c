@@ -166,15 +166,16 @@ parte_t * bfs(char mapa [filas][columnas], coordenada c, int * pasos){
                             actual_pos.row = i;
                             actual_pos.col = j;
                             pi[pos.row][pos.col] = actual_pos;
+                            coordenada temp_pos = pi[temp_x][temp_y];
 
-                            while(temp_x != c.row || temp_y != c.col){ // Continua la ejecucion mientras no se haya llegado al comienzo del camino
-                                coordenada temp_pos = pi[temp_x][temp_y]; // Busca la posicion desde la que se llego a la casilla actual
-                                push(result, temp_pos); // Annade posicion actual al camino
+                            while(temp_pos.row != c.row || temp_pos.col != c.col){ // Continua la ejecucion mientras no se haya llegado al comienzo del camino
+                                result = push_front_n_return(result, temp_pos); // Annade posicion actual al camino
                                 // sols[0] = temp_pos;
                                 // result[paso_actual] = temp_pos;
                                 // printf("%d %d", temp_x, temp_y);
                                 temp_x = temp_pos.row; // Actualizando valores de la casilla actual (nos movemos a la casilla mediante la cual se llega a la q estamos actualmente)
                                 temp_y = temp_pos.col;
+                                temp_pos = pi[temp_x][temp_y]; // Busca la posicion desde la que se llego a la casilla actual
 
                             }
                             return result;
