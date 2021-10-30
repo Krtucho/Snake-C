@@ -22,6 +22,15 @@ void push_front(parte_t ** head, coordenada pos) { // Annade nodo al inicio de l
     new_node->next = *head;
     *head = new_node;
 }
+parte_t * push_front_n_return(parte_t * head, coordenada pos){
+    parte_t * new_node;
+    new_node =  (parte_t *) malloc(sizeof(parte_t));
+
+    new_node->pos = pos;
+    new_node->next = head;
+    return new_node;
+
+}
 void print_list(parte_t * head) {
     parte_t * current = head;
     printf("Imprimiendo lista con respectivos pasos...\n");

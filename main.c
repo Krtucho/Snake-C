@@ -47,6 +47,33 @@ int main(int argc, char *argv[])
 
     print_list(sols);
 
+    // parte_t * sols_rev;// = reverse(sols);
+    parte_t * sols_two = (parte_t*)malloc(sizeof(parte_t));
+    sols_two ->pos = p;
+    coordenada p_two;
+    p_two.row = 1;
+    p_two.col = 2;
+    sols_two = push_front_n_return(sols_two, p_two);
+    coordenada p_three;
+    p_three.row = 1;
+    p_three.col = 3;
+    sols_two = push_front_n_return(sols_two, p_three);
+    printf("1: %d %d \n2: %d %d\n3: %d %d\n", 
+    sols_two->pos.row, 
+    sols_two->pos.col, 
+    sols_two->next->pos.row, 
+    sols_two->next->pos.col,
+    sols_two->next->next->pos.row,
+    sols_two->next->next->pos.col);
+    // *sols_two ->pos = p;
+    // push_front(sols_two, p);
+    // int fila = sols_two->next->pos.row;
+    // printf("%d", fila);
+    // printf("%d %d\n ", *sols_two->pos.row, *sols_two->pos.col);
+    // print_list(sols_rev);
+    // print_list(sols_two);
+
+
     return 0;
 }
 
