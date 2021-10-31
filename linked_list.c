@@ -62,3 +62,8 @@ coordenada remove_last(parte_t * head) {
     return retval;
 
 }
+
+void imprimir_coordenada(coordenada c){
+    printf("Imprimiendo Coordenada");
+    printf("%d %d \n", c.row, c.col);
+}

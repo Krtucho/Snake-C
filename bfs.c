@@ -108,13 +108,16 @@ bool pos_valida(int mapa_copy[][columnas],int rows,int cols, coordenada pos){ //
 
 // Via devolviendo LinkedList
 parte_t * bfs(char mapa [filas][columnas], coordenada c, int * pasos){
-    int mapa_copy[2][5]; // Matriz con valores numericos q representan las posiciones de la matriz de char (0 vacio, -1 obstaculos y cuerpo, -2 comida, 1posicion  a comenzar a ejecutar bfs)
-    coordenada pi[2][5]; // Matriz con coordenadas de casilla desde la cual se accede a la casilla actual.
+    int mapa_copy[filas][columnas]; // Matriz con valores numericos q representan las posiciones de la matriz de char (0 vacio, -1 obstaculos y cuerpo, -2 comida, 1posicion  a comenzar a ejecutar bfs)
+    coordenada pi[filas][columnas]; // Matriz con coordenadas de casilla desde la cual se accede a la casilla actual.
 
+    // printf("Mapa bfs\n");
+    // pinta(mapa);
+    
 
-    int i,j;
-    for( i=0;i<2;i++){
-        for( j=0;j<5;j++){
+    // int i,j;
+    for(int i=0;i<filas;i++){
+        for(int j=0;j<columnas;j++){
             if(mapa[i][j] == 'x'){ // Comidita = x = -2
                 mapa_copy[i][j] = -2;
             }
@@ -133,21 +136,28 @@ parte_t * bfs(char mapa [filas][columnas], coordenada c, int * pasos){
     mapa_copy[c.row][c.col] = 1; // Casilla desde la que se comienza a ejecutar bfs
 
 
+    // printf("Mapa copy\n");
+    // pinta_int(mapa_copy);
+
+    int paso_actual = 1;
+
     bool cambio = true; // Mientras se hagan cambios(Se encontro casilla vacia) continua con la ejecucion
     while (cambio)
     {
         cambio = false;
 
-        int i,j,k;
-        for ( i = 0; i < filas; i++)
+        // int i,j,k;
+        for (int i = 0; i < filas; i++)
         {
-            for ( j = 0; j < columnas; j++)
+            for (int j = 0; j < columnas; j++)
             {
                 int l = mapa_copy[i][j];
                 if(l <= 0)// Casilla vacia, con obstaculos o con comidita, estamos buscando aquellas casillas a las que se haya llegado desde otra o la 1ra desde la q comenzamos
                     continue;
+                if(l > paso_actual)
+                    continue;
 
-                for( k = 0; k < 4; k++){ // k = 4 xq son las direcciones Norte, Sur, Este, Oeste
+                for(int k = 0; k < 4; k++){ // k = 4 xq son las direcciones Norte, Sur, Este, Oeste
                     coordenada pos;
                     pos = pos_siguiente( i, j, k); // Obteniendo posicion al sumar x + numero que sea en la direccion
 
@@ -180,6 +190,8 @@ parte_t * bfs(char mapa [filas][columnas], coordenada c, int * pasos){
                                 temp_pos = pi[temp_x][temp_y]; // Busca la posicion desde la que se llego a la casilla actual
 
                             }
+                            // printf("Mapa copy\n");
+                            // pinta_int(mapa_copy);
                             return result;
 
                         }
@@ -195,7 +207,7 @@ parte_t * bfs(char mapa [filas][columnas], coordenada c, int * pasos){
 
             }
         }
-
+        paso_actual++;
 
     }
 
