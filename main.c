@@ -3,7 +3,7 @@
 #include "utils.h"
 // #include "bfs.h"
 //
-#include "Juego.h"
+// #include "Juego.h"
 
 // #include<stdbool.h>
 // #include "linked_list.h"
@@ -46,7 +46,7 @@ parte_t * CreaSnake(int filas, int columnas)
     return head;
 }
 
-void ColocarSnakeEnElMapa(parte_t * head, char mapa[filas][columnas])
+void ColocarSnakeEnElMapa(parte_t * head, char mapa [filas][columnas])
 {
     parte_t * current = head;
     mapa[head->pos.row][head->pos.col]='@';
@@ -64,7 +64,7 @@ void PonerComiditas(char mapa [filas][columnas],int tamannoDelSnake, int *cantCo
     int cantPosVacias=filas*columnas-tamannoDelSnake;
     //coordenada posicionesVacias [cantPosVacias];
     coordenada * posicionesVacias=malloc(cantPosVacias * sizeof *posicionesVacias);
-    int i,j,k;
+    int i,j,k=0;
     for(i=0;i<filas;i++)
     {
         for(j=0;j<columnas;j++)
@@ -90,7 +90,7 @@ void PonerComiditas(char mapa [filas][columnas],int tamannoDelSnake, int *cantCo
         cantPosVacias--;
     }
 
-
+    free(posicionesVacias);
 }
 
 void MoverSnake(parte_t * head, parte_t * movimientos, char mapa [filas][columnas],int tamannoAumentar)
@@ -195,9 +195,9 @@ void Juego(int filas, int columnas)
     coordenada c; 
     c = head->pos;
     printf("%d %d\n", c.row, c.col);
-    int cantComiditas=5;
-    parte_t * movimientos=//(parte_t*)malloc(sizeof(parte_t));
-    //movimientos = bfs(mapa, c, &pasos);
+    // cantComiditas=5;
+    parte_t * movimientos=(parte_t*)malloc(sizeof(parte_t));
+    movimientos = bfs(mapa, c, &pasos);
 
 
     while(1)//while(sePerdio==false)
