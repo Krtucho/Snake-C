@@ -16,8 +16,8 @@ typedef struct parte
     coordenada pos;
 }parte_t;
 
-int dir_x[4] = {-1, 0, 1, 0};
-int dir_y[4] = { 0, 1, 0,-1};
+// int dir_x[4] = {-1, 0, 1, 0};
+// int dir_y[4] = { 0, 1, 0,-1};
 
 int filas = 2, columnas = 5;
 

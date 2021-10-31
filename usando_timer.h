@@ -1,0 +1,1 @@
+void setTimeout(int milliseconds);

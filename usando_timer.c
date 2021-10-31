@@ -34,48 +34,48 @@ void setTimeout(int milliseconds)
 }
 
 
-int main()
-{
+// int main()
+// {
 
-    // input from user for time of delay in seconds
-    int delay;
-    printf("Enter delay: ");
-    scanf("%d", &delay);
+//     // input from user for time of delay in seconds
+//     int delay;
+//     printf("Enter delay: ");
+//     scanf("%d", &delay);
 
-    // counter downtime for run a rocket while the delay with more 0
-    do {
-        // erase the previous line and display remain of the delay
-        printf("\033[ATime left for run rocket: %d\n", delay);
+//     // counter downtime for run a rocket while the delay with more 0
+//     do {
+//         // erase the previous line and display remain of the delay
+//         printf("\033[ATime left for run rocket: %d\n", delay);
 
-        // a timeout for display
-        setTimeout(1000);
+//         // a timeout for display
+//         setTimeout(1000);
 
-        // decrease the delay to 1
-        delay--;
+//         // decrease the delay to 1
+//         delay--;
 
-    } while (delay >= 0);
+//     } while (delay >= 0);
 
-    // a string for display rocket
-    char rocket[3] = "-->";
+//     // a string for display rocket
+//     char rocket[3] = "-->";
 
-    // a string for display all trace of the rocket and the rocket itself
-    char *rocket_trace = (char *) malloc(100 * sizeof(char));
+//     // a string for display all trace of the rocket and the rocket itself
+//     char *rocket_trace = (char *) malloc(100 * sizeof(char));
 
-    // display trace of the rocket from a start to the end
-    int i;
-    char passed_way[100] = "";
-    for (i = 0; i <= 50; i++) {
-        setTimeout(25);
-        sprintf(rocket_trace, "%s%s", passed_way, rocket);
-        passed_way[i] = ' ';
-        printf("\033[A");
-        printf("| %s\n", rocket_trace);
-    }
+//     // display trace of the rocket from a start to the end
+//     int i;
+//     char passed_way[100] = "";
+//     for (i = 0; i <= 50; i++) {
+//         setTimeout(25);
+//         sprintf(rocket_trace, "%s%s", passed_way, rocket);
+//         passed_way[i] = ' ';
+//         printf("\033[A");
+//         printf("| %s\n", rocket_trace);
+//     }
 
-    // erase a line and write a new line
-    printf("\033[A");
-    printf("\033[2K");
-    puts("Good luck!");
+//     // erase a line and write a new line
+//     printf("\033[A");
+//     printf("\033[2K");
+//     puts("Good luck!");
 
-    return 0;
-}
+//     return 0;
+// }

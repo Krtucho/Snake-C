@@ -3,7 +3,9 @@
 #include <string.h>
 #include<stdbool.h>// Booleanos
 #include "utils.h"
-#include "linked_list.h"
+// #include "linked_list.h"
+#include "bfs.h"
+
 // #include "Juego.h"
 
 
